@@ -1454,4 +1454,3 @@ for i,v in pairs(game:GetService("Workspace").Ignored.Shop:GetChildren()) do
         end
     end)
 end
-
