@@ -1,7 +1,6 @@
-local UILibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/maintwink"))()
+local UILibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/twink"))()
 
-
-local MainUI = UILibrary.Load("Ar X - v1.1")
+local MainUI = UILibrary.Load("Ar X - v1.2")
 local MainPage = MainUI.AddPage("Main")
 local CombatPage = MainUI.AddPage("Combat")
 local GodPage = MainUI.AddPage("God Stuff")
@@ -11,12 +10,137 @@ local AnimationsPage = MainUI.AddPage("Animations")
 local TargetPage = MainUI.AddPage("Target")
 local CreditsPage = MainUI.AddPage("Credits")
 
+game.StarterGui:SetCore("SendNotification", {Title = "God Mode Commends", Text = "!God Bullet,!God Bullet/God Block", Icon = "rbxassetid://505845268", Duration = 10, Button1 = "It Cool Yea?"})
+game.StarterGui:SetCore("SendNotification", {Title = "Teleports Commends", Text = "!Admin Base,!Food Shop Down,!Food Shop Up,!Food Shop Taco,!Gun Shop up,!Gun Shop Down,!Bank,!Police Station,!Fire Department,!Church,!Casino", Icon = "rbxassetid://505845268", Duration = 10, Button1 = "It Cool Yea?"})
+
+-- God Bullet
+game.Players.LocalPlayer.Chatted:Connect(function(msg)
+    if msg == "!God Bullet" then
+     local Animate = game.Players.LocalPlayer.Character.Animate
+
+     local localPlayer = game:GetService('Players').LocalPlayer;
+     local localCharacter = localPlayer.Character;
+     localCharacter:FindFirstChildWhichIsA('Humanoid').Health = 0;
+     for _,v in pairs(localPlayer.Character:GetChildren()) do
+         if v:IsA('MeshPart') or v:IsA('Accessory') then
+             v:Destroy();
+         end;
+     end;
+     local newCharacter = localPlayer.CharacterAdded:Wait();
+     local spoofFolder = Instance.new('Folder');
+     spoofFolder.Name = 'FULLY_LOADED_CHAR';
+     spoofFolder.Parent = newCharacter;
+     newCharacter:WaitForChild('RagdollConstraints'):Destroy();
+     newCharacter:WaitForChild('BodyEffects'):WaitForChild('Armor'):Destroy();
+     local spoofValue = Instance.new('BoolValue', newCharacter);
+     spoofValue.Name = 'RagdollConstraints';
+     local armValue = Instance.new('IntValue', game:GetService('Players').LocalPlayer.Character:FindFirstChild('BodyEffects'));
+     armValue.Name = 'Armor';
+
+end
+end)
+
+
+-- God Bullet/God Block
+game.Players.LocalPlayer.Chatted:Connect(function(msg)
+    if msg == "!God Bullet/God Block" then
+     local Animate = game.Players.LocalPlayer.Character.Animate
+
+     local localPlayer = game:GetService('Players').LocalPlayer;
+    local localCharacter = localPlayer.Character;
+    localCharacter:FindFirstChildWhichIsA('Humanoid').Health = 0;
+    for _,v in pairs(localPlayer.Character:GetChildren()) do
+        if v:IsA('MeshPart') or v:IsA('Accessory') then
+            v:Destroy();
+        end;
+    end;
+    local newCharacter = localPlayer.CharacterAdded:Wait();
+    local spoofFolder = Instance.new('Folder');
+    spoofFolder.Name = 'FULLY_LOADED_CHAR';
+    spoofFolder.Parent = newCharacter;
+    newCharacter:WaitForChild('RagdollConstraints'):Destroy();
+    newCharacter:WaitForChild('BodyEffects'):WaitForChild('Defense'):Destroy();
+    newCharacter:WaitForChild('BodyEffects'):WaitForChild('Armor'):Destroy();
+    local spoofValue = Instance.new('BoolValue', newCharacter);
+    spoofValue.Name = 'RagdollConstraints';
+    local defValue = Instance.new('IntValue', game:GetService('Players').LocalPlayer.Character:FindFirstChild('BodyEffects'));
+    defValue.Name = 'Defense';
+    local armValue = Instance.new('IntValue', game:GetService('Players').LocalPlayer.Character:FindFirstChild('BodyEffects'));
+    armValue.Name = 'Armor';
+
+end
+end)
+
+-- Teleport
+
+game.Players.LocalPlayer.Chatted:Connect(function(msg)
+    if msg == "!Admin Base" then
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-797.15, -39.6189, -887.957)
+end
+end)
+
+game.Players.LocalPlayer.Chatted:Connect(function(msg)
+    if msg == "!Food Shop Down" then
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-335.141, 23.7129, -298.029)
+end
+end)
+
+game.Players.LocalPlayer.Chatted:Connect(function(msg)
+    if msg == "!Food Shop Up" then
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(298.477, 49.3129, -615.231)
+    end
+end)
+
+game.Players.LocalPlayer.Chatted:Connect(function(msg)
+    if msg == "!Food Shop Taco" then
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(583.96, 51.0917, -479.596)
+end
+end)
+
+game.Players.LocalPlayer.Chatted:Connect(function(msg)
+    if msg == "!Gun Shop up" then
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-797.15, -39.6189, -887.957)
+end
+end)
+
+game.Players.LocalPlayer.Chatted:Connect(function(msg)
+    if msg == "!Gun Shop Down" then
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-580.27, 8.34504, -734.832)
+end
+end)
+
+game.Players.LocalPlayer.Chatted:Connect(function(msg)
+    if msg == "!Bank" then
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-438.689, 39.0127, -284.731)
+end
+end)
+
+game.Players.LocalPlayer.Chatted:Connect(function(msg)
+    if msg == "!Police Station" then
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-263.919, 21.8302, -112.858)
+end
+end)
+
+game.Players.LocalPlayer.Chatted:Connect(function(msg)
+    if msg == "!Fire Department" then
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-129.534, 27.842, -113.062)
+end
+end)
+
+game.Players.LocalPlayer.Chatted:Connect(function(msg)
+    if msg == "!Church" then
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(205.53, 21.7803, -80.2361)
+end
+end)
+
+game.Players.LocalPlayer.Chatted:Connect(function(msg)
+    if msg == "!Casino" then
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-904.457, 24.7803, -156.994)
+end
+end)
 local LP = game.Players.LocalPlayer
     LP.PlayerGui.Chat.Frame.ChatChannelParentFrame.Visible = true
     LP.PlayerGui.Chat.Frame.ChatBarParentFrame.Position = LP.PlayerGui.Chat.Frame.ChatChannelParentFrame.Position + UDim2.new(UDim.new(),LP.PlayerGui.Chat.Frame.ChatChannelParentFrame.Size.Y)
-
-game.StarterGui:SetCore("SendNotification", {Title = "Ar X -v1.0", Text = "Made By Arvin#0530", Icon = "rbxassetid://505845268", Duration = 10, Button1 = "OK"})
-game:GetService("StarterGui"):SetCore("SendNotification", {Title = "Loaded", Text = "Press (v) To Close And Open Ui Thx For Using Ar X."})
 
 
 local Mouse = game.Players.LocalPlayer:GetMouse()
@@ -26,10 +150,10 @@ Mouse.KeyDown:connect(function(key)
 if key == "v" then
 if Closed == true then
     Closed = false
-        game.CoreGui["Ar X - v1.1"].Enabled = false
+        game.CoreGui["Ar X - v1.2"].Enabled = false
     else
         Closed = true
-            game.CoreGui["Ar X - v1.1"].Enabled = true
+            game.CoreGui["Ar X - v1.2"].Enabled = true
         end
     end
 end)
