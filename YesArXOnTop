@@ -14,7 +14,7 @@ local LP = game.Players.LocalPlayer
     LP.PlayerGui.Chat.Frame.ChatChannelParentFrame.Visible = true
     LP.PlayerGui.Chat.Frame.ChatBarParentFrame.Position = LP.PlayerGui.Chat.Frame.ChatChannelParentFrame.Position + UDim2.new(UDim.new(),LP.PlayerGui.Chat.Frame.ChatChannelParentFrame.Size.Y)
 
-game.StarterGui:SetCore("SendNotification", {Title = "Ar X -v1.0", Text = "Made By Arvin#0530", Icon = "rbxassetid://505845268", Duration = 10, Button1 = "OK"})
+game.StarterGui:SetCore("SendNotification", {Title = "Ar X -v1.1", Text = "Made By Arvin#0530", Icon = "rbxassetid://505845268", Duration = 10, Button1 = "OK"})
 game:GetService("StarterGui"):SetCore("SendNotification", {Title = "Loaded", Text = "Press (v) To Close And Open Ui Thx For Using Ar X."})
 
 
@@ -25,10 +25,10 @@ Mouse.KeyDown:connect(function(key)
 if key == "v" then
 if Closed == true then
     Closed = false
-        game.CoreGui["Ar X - v1.0"].Enabled = false
+        game.CoreGui["Ar X - v1.1"].Enabled = false
     else
         Closed = true
-            game.CoreGui["Ar X - v1.0"].Enabled = true
+            game.CoreGui["Ar X - v1.1"].Enabled = true
         end
     end
 end)
