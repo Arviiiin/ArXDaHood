@@ -12,7 +12,7 @@ local CreditsPage = MainUI.AddPage("Credits")
 
 game.StarterGui:SetCore("SendNotification", {Title = "God Mode Commends", Text = "!God Bullet,!God Bullet/God Block", Icon = "rbxassetid://505845268", Duration = 10, Button1 = "It Cool Yea?"})
 game.StarterGui:SetCore("SendNotification", {Title = "Teleports Commends", Text = "!Admin Base,!Food Shop Down,!Food Shop Up,!Food Shop Taco,!Gun Shop up,!Gun Shop Down,!Bank,!Police Station,!Fire Department,!Church,!Casino", Icon = "rbxassetid://505845268", Duration = 10, Button1 = "It Cool Yea?"})
-
+game.StarterGui:SetCore("SendNotification", {Title = "Teleports Commends", Text = "!Police Station,!Fire Department,!Church,!Casino", Icon = "rbxassetid://505845268", Duration = 10, Button1 = "It Cool Yea?"})
 -- God Bullet
 game.Players.LocalPlayer.Chatted:Connect(function(msg)
     if msg == "!God Bullet" then
@@ -142,6 +142,8 @@ local LP = game.Players.LocalPlayer
     LP.PlayerGui.Chat.Frame.ChatChannelParentFrame.Visible = true
     LP.PlayerGui.Chat.Frame.ChatBarParentFrame.Position = LP.PlayerGui.Chat.Frame.ChatChannelParentFrame.Position + UDim2.new(UDim.new(),LP.PlayerGui.Chat.Frame.ChatChannelParentFrame.Size.Y)
 
+    game:GetService("StarterGui"):SetCore("SendNotification", {Title = "Loaded", Text = "Welcome To Ar X."})
+    game:GetService("StarterGui"):SetCore("SendNotification", {Title = "Credits", Text = "Made By Arvin#0530."})
 
 local Mouse = game.Players.LocalPlayer:GetMouse()
 local Closed = true
@@ -309,16 +311,68 @@ local bikeflyernigger = MainPage.AddButton("Bike Fly", function()
 			control[key]=false
 		end
 	end)
-end)
 
-local xdfporn = MainPage.AddButton("Force Reset", function()
-    for i, v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
-        if v:IsA("BasePart") then
-            v:Destroy()
-        end
-    end
+	while game.RunService.Stepped:wait() do
+		local seat = (Plr.Character or Plr.CharacterAdded:wait()):WaitForChild("Humanoid").SeatPart
+		if Plr.PlayerGui:FindFirstChild("MainScreenGui") and Plr.PlayerGui.MainScreenGui:FindFirstChild("Bar") and Plr.PlayerGui.MainScreenGui.Bar:FindFirstChild("Speed") then
+			Plr.PlayerGui.MainScreenGui.Bar.Speed.bar.Size = UDim2.new(speed / 100 * 0.95, 0, 0.83, 0)
+		else
+			local c = Plr.PlayerGui.MainScreenGui.Bar.HP
+			local g = c:Clone()
+			g.Name = "Speed"
+			g.Position = UDim2.new(0.5, 0, 1, -120)
+			g.bar.BackgroundColor3 = Color3.fromRGB(255, 155, 0)
+			g.Picture.Image.Image = "rbxassetid://181035717"
+			g.TextLabel.Text = "Speed"
+			g.Parent = c.Parent
+		end
+		if seat ~= nil and seat:IsDescendantOf(game.Workspace.Vehicles) then
+			if seat ~= old then
+				if old then
+					old.Vel:Destroy()
+					old.Gyro:Destroy()
+				end
+				old = seat
+				for i = 1, 2 do
+					if wheels[i] then
+						wheels[i][2].Parent = wheels[i][1]
+					end
+					local wheel = seat.Parent.Wheel
+					wheels[i] = {seat.Parent, wheel}
+					wheel:remove()
+				end
+				local gyro = Instance.new("BodyGyro", seat)
+				gyro.Name = "Gyro"
+				local pos = Instance.new("BodyVelocity", seat)
+				pos.Name = "Vel"
+				gyro.maxTorque = Vector3.new(9e9, 9e9, 9e9)
+				pos.MaxForce = Vector3.new(9e9, 9e9, 9e9)
+			else 
+				seat.Gyro.cframe = workspace.CurrentCamera.CoordinateFrame
+				local vel = CFrame.new(0, 0, 0)
+				if control.w then
+					vel = vel * CFrame.new(0, 0, -speed)
+				end
+				if control.s then
+					vel = vel * CFrame.new(0, 0, speed)
+				end
+				if control.a then
+					vel = vel * CFrame.new(-speed, 0, 0)
+				end
+				if control.d then
+					vel = vel * CFrame.new(speed, 0, 0)
+				end
+				seat.Vel.Velocity = (seat.CFrame*vel).p - seat.CFrame.p
+			end
+		end
+		if control.e and speed<100 then
+			speed = speed + 1
+		end
+		if control.q and speed > 0 then
+			speed = speed - 1
+		end
+	end
 end)
-
 
 local unjailbutton = MainPage.AddButton("Unjail", function()
     if game:GetService("Players").LocalPlayer.DataFolder.Currency.Value >= 125 then
@@ -1578,3 +1632,4 @@ for i,v in pairs(game:GetService("Workspace").Ignored.Shop:GetChildren()) do
         end
     end)
 end
+
